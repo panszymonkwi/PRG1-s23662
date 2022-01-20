@@ -22,7 +22,7 @@ class Punkt {
   };
 
 class Prostokat {
- public:
+ private:
    Punkt  wlg;    //wierzcholek lewy gorny
    Punkt  wpd;    //wierzcholek prawy dolny
  public:
