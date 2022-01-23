@@ -7,7 +7,6 @@
 #include <sys/ioctl.h>
 #include <termios.h>
 
-
  auto const bok = 25;
  char plansza[25][25];
  char klawisz;
@@ -31,7 +30,6 @@
       return;  
       }
       
-     
    auto widok_planszy(size_t wynik) -> void
    {
       system ("clear");
@@ -110,13 +108,10 @@ auto main() -> int
   auto right = false;
   auto up = true;
   auto down = false;
-
   auto wynik = 0;
   auto dlugosc = 3;
 
   std::cout << "Gra   S N A K E \n";
-
-  //std::cout << "Wybierz poziom trudnosci (1 - 10) : ";
   do 
     { 
     std::cout << "Wybierz poziom trudnosci (1 - 10) : ";
@@ -128,14 +123,12 @@ auto main() -> int
       } 
     } while ((poziom < 1) || (poziom > 10));
     
-
   xs[0] = bok/2;
   ys[0] = bok/2;
   xs[1] = bok/2;
   ys[1] = 1 + bok/2;
   xs[2]= bok/2;
   ys[2] = 2 + bok/2;
-
   czysta_plansza();
   plansza[bok/2][bok/2] = '@';
   plansza[bok/2][1+bok/2] = '#';
@@ -157,8 +150,7 @@ auto main() -> int
    maluj_snaka(xs, ys, dlugosc);
   
   if (kbhit()) {
-   
-   klawisz = getklawisz();
+     klawisz = getklawisz();
      if (klawisz == 27) {
        klawisz = getklawisz();
        if (klawisz == 91) {
@@ -167,35 +159,29 @@ auto main() -> int
             up = true;
             left = false;
             right = false;
-          //ys[0] = ys[0]-1;
             }        
           if ((klawisz == 66) && (!up)){
              down = true;
              right = false;
              left = false;
-           //ys[0] = ys[0]+1;
           }  
           if ((klawisz == 68) && (!right)) {
              left = true;
              up = false;
              down = false;
-           //xs[0] = xs[0]-1;
            }
            if ((klawisz == 67) && (!left)) {
               right = true;
               up = false;
               down = false;
-             // xs[0] = xs[0]+1;
              }
-         //  continue;
          }
       }
-   } //else {
-       if (up) {ys[0]--;}
-       else if (down) {ys[0]++;}
-           else if (right) {xs[0]++;}
-               else if (left) { xs[0]--;};
-   // }           
+   } 
+   if (up) {ys[0]--;}
+   else if (down) {ys[0]++;}
+       else if (right) {xs[0]++;}
+           else if (left) { xs[0]--;};          
   
   if ((plansza[xs[0]][ys[0]] != '*' ) && (plansza[xs[0]][ys[0]] != '#')) {
     if (plansza[xs[0]][ys[0]] == 'X') {
@@ -214,13 +200,7 @@ auto main() -> int
       xs[0] = 0;
       }
  }
-  //widok_planszy(plansza, bok, wynik);
-
-  std:: cout << "Ups...Koniec gry! \n";
- // klawisz = getklawisz();
-//  while (klawisz != 13) {
- //   klawisz = getklawisz();
- //   }
+ std:: cout << "Ups...Koniec gry! \n";
  return 0;
 }
 
